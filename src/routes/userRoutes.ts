@@ -7,14 +7,6 @@ const router = express.Router();
 const fs = require('fs')
 
 
-// 1 / 2 requests
-// 1.7 kB / 1.7 kB transferred
-// 1.4 kB / 62.1 kB resources
-// ------WebKitFormBoundarymaBZmXbZmovrUm2V
-// Content-Disposition: form-data; name="profileImage"; filename="Screenshot from 2023-03-03 20-21-33.png"
-// Content-Type: image/png
-
-
 const storage = multer.diskStorage({
   destination: `./uploads/`,
   filename: function(req, file, cb) {
@@ -23,14 +15,7 @@ const storage = multer.diskStorage({
 });
 
 
-
 const upload = multer({ storage: storage });
-
-
-
-
-
-  
 
 
 // User routes
@@ -44,16 +29,6 @@ router.post('/authenticate', UserController.authenticateUser);
 router.post('/upload', upload.single('file'), (req, res) => {
   res.send(req.file);
 });
-
-
-
-
-
-
-
-
-
-
 
 
 export default router;
